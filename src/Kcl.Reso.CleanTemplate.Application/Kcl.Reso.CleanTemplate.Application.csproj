@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Hybrid" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="Serilog" />
+    <PackageReference Include="Scrutor" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kcl.Reso.CleanTemplate.Domain\Kcl.Reso.CleanTemplate.Domain.csproj" />
+    <ProjectReference Include="..\Kcl.Reso.CleanTemplate.SharedKernel\Kcl.Reso.CleanTemplate.SharedKernel.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+	<InternalsVisibleTo Include="Kcl.Reso.CleanTemplate.Application.UnitTests" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+USER app
+WORKDIR /app
+EXPOSE 8080
+EXPOSE 8081
+
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+ARG BUILD_CONFIGURATION=Release
+WORKDIR /src
+COPY ["Directory.Build.props", "."]
+COPY ["src/Kcl.Reso.CleanTemplate.Web.Api/Kcl.Reso.CleanTemplate.Web.Api.csproj", "src/Kcl.Reso.CleanTemplate.Web.Api/"]
+COPY ["src/Kcl.Reso.CleanTemplate.Infrastructure/Kcl.Reso.CleanTemplate.Infrastructure.csproj", "src/Kcl.Reso.CleanTemplate.Infrastructure/"]
+COPY ["src/Kcl.Reso.CleanTemplate.Application/Kcl.Reso.CleanTemplate.Application.csproj", "src/Kcl.Reso.CleanTemplate.Application/"]
+COPY ["src/Kcl.Reso.CleanTemplate.Domain/Kcl.Reso.CleanTemplate.Domain.csproj", "src/Kcl.Reso.CleanTemplate.Domain/"]
+COPY ["src/Kcl.Reso.CleanTemplate.SharedKernel/Kcl.Reso.CleanTemplate.SharedKernel.csproj", "src/Kcl.Reso.CleanTemplate.SharedKernel/"]
+RUN dotnet restore "./src/Kcl.Reso.CleanTemplate.Web.Api/Kcl.Reso.CleanTemplate.Web.Api.csproj"
+COPY . .
+WORKDIR "/src/src/Kcl.Reso.CleanTemplate.Web.Api"
+RUN dotnet build "./Kcl.Reso.CleanTemplate.Web.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
+
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
+RUN dotnet publish "./Kcl.Reso.CleanTemplate.Web.Api.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Kcl.Reso.CleanTemplate.Web.Api.dll"]

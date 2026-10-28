@@ -1,0 +1,7 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\Kcl.Reso.CleanTemplate.SharedKernel\Kcl.Reso.CleanTemplate.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

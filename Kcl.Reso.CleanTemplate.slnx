@@ -1,0 +1,22 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Kcl.Reso.CleanTemplate.Application/Kcl.Reso.CleanTemplate.Application.csproj" />
+    <Project Path="src/Kcl.Reso.CleanTemplate.Domain/Kcl.Reso.CleanTemplate.Domain.csproj" />
+    <Project Path="src/Kcl.Reso.CleanTemplate.Infrastructure/Kcl.Reso.CleanTemplate.Infrastructure.csproj" />
+    <Project Path="src/Kcl.Reso.CleanTemplate.SharedKernel/Kcl.Reso.CleanTemplate.SharedKernel.csproj" />
+    <Project Path="src/Kcl.Reso.CleanTemplate.Web.Api/Kcl.Reso.CleanTemplate.Web.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Kcl.Reso.CleanTemplate.Application.UnitTests/Kcl.Reso.CleanTemplate.Application.UnitTests.csproj" />
+    <Project Path="tests/Kcl.Reso.CleanTemplate.ArchitectureTests/Kcl.Reso.CleanTemplate.ArchitectureTests.csproj" />
+    <Project Path="tests/Kcl.Reso.CleanTemplate.IntegrationTests/Kcl.Reso.CleanTemplate.IntegrationTests.csproj" />
+  </Folder>
+  <Project Path="docker-compose.dcproj">
+    <Build />
+  </Project>
+</Solution>
